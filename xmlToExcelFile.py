@@ -1,7 +1,7 @@
 from xml.etree import ElementTree
 from openpyxl import Workbook
-from easygui import *
-import sys
+from Tkinter import *
+from tkFileDialog import askopenfilename
 
 # Initializing the Excel workbook
 wb = Workbook()
@@ -9,8 +9,9 @@ wb = Workbook()
 writeToFile = 'Unlocked.xlsx'
 
 # Prompting the user for the locaion to the XML file on disk and parsing it
-filePath = enterbox("Enter the path to XML file")
-xmlFile = open(filePath)
+Tk().withdraw()
+filePath = askopenfilename()
+xmlFile = open(str(filePath))
 studentRecords = ElementTree.parse(xmlFile)
 
 # Finding root element of XML
